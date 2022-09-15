@@ -6,3 +6,10 @@ class ShopSerializer(serializers.ModelSerializer):
           model = Shop
           # fields = ['id','title','code','linenons','language','style']
           fields = '__all__'
+          
+          
+
+class MenuSerializer(serializers.ModelSerializer):
+     class Meta:
+          model = Menu
+          fields = '__all__'
