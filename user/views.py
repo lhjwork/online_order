@@ -22,3 +22,19 @@ def user(request):
                return JsonResponse(serializer.data, status=201)
           return JsonResponse(serializer.errors, status=400)
      
+     
+@csrf_exempt
+def login(request):
+     if request.method == 'POST':
+          name = request.POST['name']
+          try:
+               request.session['user_id'] =  User.objects.all().get(name = name).id
+               print('32323',request.session['user_id'])
+               print('33333',request.session)
+               return render(request, 'user/success.html')
+          except:
+               return render(request, 'user/fail.html')
+          
+     elif request.method == 'GET':
+          # 내가 주문한 리스트 보여주기
+          return render(request,'user/login.html')
