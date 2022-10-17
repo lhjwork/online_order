@@ -14,8 +14,7 @@
       {%endfor%}
     </td>
     <td style="border: 1px solid black">
-      {% comment %} estimated_time이 -1이라는 말은 사장님이 아직 입력을 안했다는
-      뜻 {% endcomment %} {% if order.estimated_time == -1 %}
+      {% if order.estimated_time == -1 %}
       <form method="POST" action="{% url 'timeinput' %}">
         <input type="number" name="estimated_time" />
         <input type="hidden" name="order_id" value="{{order.id}}" />
